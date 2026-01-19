@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Poles | V3 Kraft - Style Carton/Blueprint</title>
+    <style>
+        :root {
+            --kraft: #c4a574;
+            --kraft-light: #e8d9bc;
+            --kraft-dark: #8b6914;
+            --blueprint: #1e3a5f;
+            --blueprint-light: #2c5282;
+            --white-line: rgba(255,255,255,0.3);
+            --red-accent: #c53030;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Courier New', monospace;
+            background: var(--kraft);
+            color: var(--blueprint);
+            min-height: 100vh;
+        }
+        .texture {
+            position: fixed;
+            inset: 0;
+            background-image: 
+                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(139,105,20,0.03) 2px, rgba(139,105,20,0.03) 4px),
+                repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(139,105,20,0.03) 2px, rgba(139,105,20,0.03) 4px);
+            pointer-events: none;
+            z-index: 1;
+        }
+        header {
+            background: var(--blueprint);
+            padding: 1.5rem 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+        header::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: 
+                linear-gradient(var(--white-line) 1px, transparent 1px),
+                linear-gradient(90deg, var(--white-line) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        .logo {
+            position: relative;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .logo-box {
+            width: 50px;
+            height: 50px;
+            border: 3px solid #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+        main {
+            position: relative;
+            z-index: 2;
+            padding: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .intro {
+            background: var(--kraft-light);
+            border: 3px dashed var(--kraft-dark);
+            padding: 2rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        .intro::before {
+            content: 'SPECIFICATIONS';
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            background: var(--kraft-light);
+            padding: 0 10px;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            color: var(--kraft-dark);
+        }
+        .intro h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+        .intro p {
+            line-height: 1.8;
+            color: var(--blueprint-light);
+        }
+        h2 {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--blueprint);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .card {
+            background: #fff;
+            border: 2px solid var(--blueprint);
+            position: relative;
+            padding: 0;
+            overflow: hidden;
+        }
+        .card-header {
+            background: var(--blueprint);
+            color: #fff;
+            padding: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .card-body {
+            padding: 1.5rem;
+            background-image: 
+                linear-gradient(rgba(30,58,95,0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(30,58,95,0.05) 1px, transparent 1px);
+            background-size: 10px 10px;
+        }
+        .card-body p { line-height: 1.7; margin-bottom: 1rem; }
+        .stamp {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border: 2px solid var(--red-accent);
+            color: var(--red-accent);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            transform: rotate(-3deg);
+            font-weight: 700;
+        }
+        .cta-section {
+            margin-top: 3rem;
+            background: var(--blueprint);
+            padding: 3rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: 
+                linear-gradient(var(--white-line) 1px, transparent 1px),
+                linear-gradient(90deg, var(--white-line) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+        .cta-section h2, .cta-section p {
+            position: relative;
+            color: #fff;
+            border: none;
+        }
+        .cta-btn {
+            position: relative;
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--kraft);
+            color: var(--blueprint);
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 1.5rem;
+            border: 3px solid var(--kraft-dark);
+            transition: all 0.3s;
+        }
+        .cta-btn:hover {
+            background: var(--kraft-light);
+            transform: translateY(-3px);
+        }
+        .palette {
+            margin-top: 3rem;
+            padding: 2rem;
+            background: #fff;
+            border: 2px solid var(--blueprint);
+        }
+        .palette h3 {
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+        }
+        .colors { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+        .color-chip {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        .color-chip .chip {
+            width: 50px;
+            height: 50px;
+            border: 2px solid var(--blueprint);
+        }
+        .color-chip span {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: var(--kraft-dark);
+            color: var(--kraft-light);
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            position: relative;
+            z-index: 2;
+        }
+    </style>
+</head>
+<body>
+    <div class="texture"></div>
+    <header>
+        <div class="logo">
+            <div class="logo-box">MP</div>
+            Multi-Poles
+        </div>
+    </header>
+    <main>
+        <div class="intro">
+            <h1>Solutions PLV & Packaging Carton</h1>
+            <p>Specialistes de la fabrication sur-mesure de presentoirs et emballages en carton. Design technique, production eco-responsable, livraison rapide.</p>
+        </div>
+        <h2>Nos Solutions Techniques</h2>
+        <div class="services">
+            <div class="card">
+                <div class="card-header">
+                    <span>PLV Carton</span>
+                    <span>REF: PLV-001</span>
+                </div>
+                <div class="card-body">
+                    <p>Presentoirs de comptoir, totems, displays sur-mesure. Carton kraft ondule haute resistance.</p>
+                    <span class="stamp">Eco-Friendly</span>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <span>Pack Carton</span>
+                    <span>REF: BOX-002</span>
+                </div>
+                <div class="card-body">
+                    <p>Boites, coffrets, etuis personnalises. Impression offset ou numerique, vernis selectif.</p>
+                    <span class="stamp">100% Recyclable</span>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <span>Prototypage</span>
+                    <span>REF: PRO-003</span>
+                </div>
+                <div class="card-body">
+                    <p>Maquettes et prototypes rapides. Decoupe laser, pliage precision, tests d'assemblage.</p>
+                    <span class="stamp">48h Express</span>
+                </div>
+            </div>
+        </div>
+        <div class="cta-section">
+            <h2>Blueprint de votre projet?</h2>
+            <p>Envoyez-nous vos specifications techniques</p>
+            <a href="#" class="cta-btn">Demander un devis</a>
+        </div>
+        <div class="palette">
+            <h3>Palette Kraft - Ideale pour PLV & Packaging Carton</h3>
+            <div class="colors">
+                <div class="color-chip">
+                    <div class="chip" style="background: #c4a574;"></div>
+                    <span>#C4A574<br>Kraft</span>
+                </div>
+                <div class="color-chip">
+                    <div class="chip" style="background: #e8d9bc;"></div>
+                    <span>#E8D9BC<br>Kraft Clair</span>
+                </div>
+                <div class="color-chip">
+                    <div class="chip" style="background: #8b6914;"></div>
+                    <span>#8B6914<br>Kraft Fonce</span>
+                </div>
+                <div class="color-chip">
+                    <div class="chip" style="background: #1e3a5f;"></div>
+                    <span>#1E3A5F<br>Blueprint</span>
+                </div>
+                <div class="color-chip">
+                    <div class="chip" style="background: #c53030;"></div>
+                    <span>#C53030<br>Rouge Accent</span>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        Multi-Poles Beta | V3 Kraft - Style Carton/Blueprint
+    </footer>
+</body>
+</html>
