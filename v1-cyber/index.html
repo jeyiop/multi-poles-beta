@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Poles | V1 Cyber - Style Neon/Isometrique</title>
+    <style>
+        :root {
+            --neon-cyan: #00f0ff;
+            --neon-magenta: #ff00ff;
+            --neon-purple: #8b00ff;
+            --dark-bg: #0a0a1a;
+            --dark-surface: #12122a;
+            --grid-line: rgba(0, 240, 255, 0.1);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: var(--dark-bg);
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        .grid-bg {
+            position: fixed;
+            inset: 0;
+            background-image: 
+                linear-gradient(var(--grid-line) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+            background-size: 50px 50px;
+            perspective: 500px;
+            z-index: -1;
+        }
+        header {
+            padding: 2rem;
+            text-align: center;
+            border-bottom: 1px solid var(--neon-cyan);
+            background: rgba(0,0,0,0.5);
+        }
+        .logo {
+            font-size: 3rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--neon-cyan), var(--neon-magenta));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px var(--neon-cyan);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 10px var(--neon-cyan)); }
+            to { filter: drop-shadow(0 0 20px var(--neon-magenta)); }
+        }
+        .tagline {
+            color: var(--neon-cyan);
+            margin-top: 0.5rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+        main { padding: 4rem 2rem; max-width: 1200px; margin: 0 auto; }
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--neon-magenta);
+            text-shadow: 0 0 10px var(--neon-magenta);
+        }
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        .card {
+            background: var(--dark-surface);
+            border: 1px solid var(--neon-cyan);
+            border-radius: 10px;
+            padding: 2rem;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        .card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, transparent, rgba(0,240,255,0.1));
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 30px rgba(0,240,255,0.3), 0 0 60px rgba(255,0,255,0.1);
+        }
+        .card:hover::before { opacity: 1; }
+        .card h3 {
+            color: var(--neon-cyan);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        .card p { color: #aaa; line-height: 1.6; }
+        .cta-section {
+            margin-top: 4rem;
+            text-align: center;
+            padding: 3rem;
+            background: linear-gradient(135deg, var(--dark-surface), rgba(139,0,255,0.2));
+            border-radius: 20px;
+            border: 1px solid var(--neon-purple);
+        }
+        .cta-btn {
+            display: inline-block;
+            padding: 1rem 3rem;
+            background: linear-gradient(135deg, var(--neon-cyan), var(--neon-magenta));
+            color: #000;
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 50px;
+            margin-top: 1.5rem;
+            transition: all 0.3s;
+        }
+        .cta-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 40px var(--neon-cyan);
+        }
+        .palette {
+            margin-top: 4rem;
+            padding: 2rem;
+            background: var(--dark-surface);
+            border-radius: 15px;
+        }
+        .palette h3 { color: var(--neon-cyan); margin-bottom: 1.5rem; }
+        .colors {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .color-box {
+            width: 100px;
+            height: 100px;
+            border-radius: 10px;
+            display: flex;
+            align-items: flex-end;
+            padding: 0.5rem;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--neon-cyan);
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-bg"></div>
+    <header>
+        <h1 class="logo">MULTI-POLES</h1>
+        <p class="tagline">PLV & Packaging Premium</p>
+    </header>
+    <main>
+        <h2>Nos Services</h2>
+        <div class="services">
+            <div class="card">
+                <h3>PLV Premium</h3>
+                <p>Presentoirs et displays haute qualite avec finitions neon et effets lumineux pour un impact maximal en point de vente.</p>
+            </div>
+            <div class="card">
+                <h3>Packaging Carton</h3>
+                <p>Solutions d'emballage personnalisees avec impressions holographiques et effets speciaux cyber-punk.</p>
+            </div>
+            <div class="card">
+                <h3>Design Graphique</h3>
+                <p>Creations visuelles futuristes pour vos marques avec palettes neon et compositions isometriques.</p>
+            </div>
+        </div>
+        <div class="cta-section">
+            <h2>Pret a illuminer votre marque?</h2>
+            <p>Contactez-nous pour un devis personnalise</p>
+            <a href="#" class="cta-btn">Demander un devis</a>
+        </div>
+        <div class="palette">
+            <h3>Palette Cyber - Ideale pour PLV & Packaging</h3>
+            <div class="colors">
+                <div class="color-box" style="background: #00f0ff; color: #000;">#00f0ff</div>
+                <div class="color-box" style="background: #ff00ff; color: #000;">#ff00ff</div>
+                <div class="color-box" style="background: #8b00ff; color: #fff;">#8b00ff</div>
+                <div class="color-box" style="background: #0a0a1a; color: #fff; border: 1px solid #00f0ff;">#0a0a1a</div>
+                <div class="color-box" style="background: #12122a; color: #fff; border: 1px solid #00f0ff;">#12122a</div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>Multi-Poles Beta | V1 Cyber Style</p>
+    </footer>
+</body>
+</html>
